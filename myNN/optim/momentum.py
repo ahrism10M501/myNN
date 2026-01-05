@@ -1,5 +1,5 @@
 import numpy as np
-from src.optim.Optimizer import Optimizer
+from .Optimizer import Optimizer
 
 class momentum(Optimizer):
 		# SGD와 다르게 momentum 계수를 받아옵니다

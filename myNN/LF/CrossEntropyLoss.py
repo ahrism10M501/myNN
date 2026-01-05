@@ -1,5 +1,5 @@
 import numpy as np
-from myNN.LF.LossFn import LossFn
+from .LossFn import LossFn
 
 class CrossEntropyLoss(LossFn):
     def forward(self, inputs, labels):
@@ -18,3 +18,14 @@ class CrossEntropyLoss(LossFn):
             
         negative_log_likelihoods = -correct_logit
         return negative_log_likelihoods.flatten
+    
+    def backward(self, dout, labels):
+        samples, classes = dout.shape[0], dout.shape[1]
+        
+        if len(labels.shape) == 1:
+            one_hot_labels = np.zeros((samples, classes))
+            one_hot_labels[np.arange(samples), labels] = 1
+            labels = one_hot_labels
+        
+        dx = -labels / dout
+        return dx

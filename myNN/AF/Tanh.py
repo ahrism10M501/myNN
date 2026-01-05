@@ -1,6 +1,9 @@
 import numpy as np
-from func.activationFn import ActivationFn
+from .ActivationFn import ActivationFn
 
 class Tanh(ActivationFn):
     def forward(self, inputs):
         self.outputs = (np.exp(inputs) - np.exp(-inputs)) / (np.exp(inputs) + np.exp(-inputs))
+    
+    def backward(self, dout):
+        pass

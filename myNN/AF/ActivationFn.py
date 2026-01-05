@@ -7,5 +7,5 @@ class ActivationFn(abc.ABC):
         pass
     
     @abc.abstractmethod
-    def backward(self, inputs):
+    def backward(self, dout):
         pass

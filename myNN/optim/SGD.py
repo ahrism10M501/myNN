@@ -1,5 +1,5 @@
 import numpy as np
-from myNN.optim.Optimizer import Optimizer
+from .Optimizer import Optimizer
 
 class SGD(Optimizer):
     def __init__(self, params, lr):

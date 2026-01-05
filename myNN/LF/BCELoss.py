@@ -1,5 +1,5 @@
 import numpy as np
-from src.func.LossFn import LossFn
+from .LossFn import LossFn
 
 class BCELoss(LossFn):
     def forward(self, inputs, labels):
@@ -11,3 +11,10 @@ class BCELoss(LossFn):
         
         loss_total = -(term1 + term2)
         return loss_total.flatten()
+    
+    def backward(self, dout, labels):
+        epsilon = 1e-12
+        dout = np.clip(dout, epsilon, 1.0 - epsilon)
+        
+        dx = -(labels / dout) + (1-labels) / (1-dout)
+        return dx

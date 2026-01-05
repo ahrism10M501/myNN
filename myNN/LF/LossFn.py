@@ -6,7 +6,7 @@ class LossFn(abc.ABC):
     def forward(self, inputs, labels) -> np.ndarray: pass
     
     @abc.abstractmethod
-    def backward(self, inputs, labels):
+    def backward(self, dout, labels):
         if self.data_loss is None:
             raise ValueError("Loss must call calculate() before backward")
         pass
