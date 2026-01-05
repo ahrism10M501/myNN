@@ -17,7 +17,7 @@ class CrossEntropyLoss(LossFn):
             raise
             
         negative_log_likelihoods = -correct_logit
-        return negative_log_likelihoods.flatten
+        return negative_log_likelihoods.flatten()
     
     def backward(self, dout, labels):
         samples, classes = dout.shape[0], dout.shape[1]
