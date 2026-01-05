@@ -15,3 +15,6 @@ class LossFn(abc.ABC):
         sample_losses = self.forward(output, y)
         self.data_loss = np.mean(sample_losses)
         return self.data_loss
+    
+    def __call__(self, inputs, labels):
+        return self.forward(inputs, labels)

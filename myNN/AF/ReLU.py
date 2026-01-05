@@ -5,6 +5,7 @@ class ReLU(ActivationFn):
     def forward(self, inputs):
         self.inputs = inputs
         self.output = np.maximum(0, inputs)
+        return self.output
 
     def backward(self, dout):
         dx = dout.copy()

@@ -9,3 +9,6 @@ class ActivationFn(abc.ABC):
     @abc.abstractmethod
     def backward(self, dout):
         pass
+    
+    def __call__(self, inputs):
+        return self.forward(inputs)

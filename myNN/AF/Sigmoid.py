@@ -4,6 +4,7 @@ from .ActivationFn import ActivationFn
 class Sigmoid(ActivationFn):
     def forward(self, inputs):
         self.output = 1 / (1 + np.exp(-inputs))
+        return self.output
         
     def backward(self, dout):
         pass
